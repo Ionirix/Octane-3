@@ -1,26 +1,49 @@
-# Octane 3 Public Demo
+Octane 3 — Unified Runtime Architecture
+Octane 3 is the free, open‑source public scaffold of the Ionirix runtime system. It provides a clean, modular execution layer designed for developers and researchers who want to explore structured runtime design, engine composition, and predictable system behavior. All sovereign, private, or non‑exportable components have been removed for safety.
 
-This standalone copy is a local-only sample application. It uses fictional mock
-data and does not contact external services.
+⭐ Key Features
+Unified runtime identity — consistent naming and structure across modules.
 
-## Run
+Modular engine layout — Super‑Render, Hyper‑Process, Lux Ordo, Weaver, and MSI exposed as safe public stubs.
 
-Requirements: Node.js 18 or newer.
+Predictable folder structure — optimized for readability, tooling, and developer onboarding.
 
-```powershell
-cd octane-3
-npm test
-npm start
-```
+Public API surface — /api/octane provides a stable entry point for examples and integrations.
 
-Open `http://127.0.0.1:8787`. The example API is available at
-`/api/public-endpoint`. No API keys, environment variables, or dependency
-installation are required.
+Legacy isolation — older versions moved to /legacy for reference without affecting the main runtime.
 
-## Project layout
+📁 Repository Structure
+Code
+/core          # Public runtime core
+/engines       # Engine stubs and public modules
+/platform      # Shared utilities and interfaces
+/operations    # Execution helpers and examples
+/legacy        # Archived versions for reference
+/docs          # Architecture and usage documentation
+This structure follows modern best practices for open‑source runtime frameworks.
 
-- `Data/` contains fictional sample records.
-- `octane-3/` contains the local demo server, page, documentation, and tests.
-- Empty module folders are retained as extension points for public examples.
+🧩 What’s Included
+Public engine stubs
 
-This demo is not a live monitoring service and does not ingest live data.
+Example runtime flows
+
+Documentation for architecture and components
+
+Public API reference
+
+Safe utilities and helper modules
+
+🔒 What’s Removed (for safety)
+Sovereign orchestration logic
+
+Private pipelines
+
+Internal coordination matrices
+
+Production endpoints
+
+Any personal or proprietary identifiers
+
+Octane 3 public is a safe educational and development scaffold, not the full runtime.
+
+🌍 Purpose
