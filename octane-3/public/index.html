@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Octane 3 Public Demo</title>
+    <style>
+      :root { color-scheme: light dark; font: 16px/1.5 system-ui, sans-serif; }
+      body { margin: 0 auto; max-width: 56rem; padding: 2rem 1.25rem; }
+      h1 { margin-bottom: .25rem; }
+      .notice { color: #6b7280; margin-top: 0; }
+      .events { display: grid; gap: 1rem; margin-top: 2rem; }
+      article { border: 1px solid #8886; border-radius: .75rem; padding: 1rem; }
+      article h2 { font-size: 1.1rem; margin: 0 0 .5rem; }
+      .meta { color: #6b7280; font-size: .9rem; }
+      #status { min-height: 1.5rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Octane 3 Public Demo</h1>
+      <p class="notice">A local-only interface populated with fictional sample data.</p>
+      <p id="status" role="status">Loading sample records…</p>
+      <section id="events" class="events" aria-label="Sample records"></section>
+    </main>
+    <script>
+      const status = document.querySelector('#status');
+      const container = document.querySelector('#events');
+
+      fetch('/api/public-endpoint')
+        .then((response) => {
+          if (!response.ok) throw new Error(`Request failed (${response.status})`);
+          return response.json();
+        })
+        .then((data) => {
+          status.textContent = data.notice;
+          for (const event of data.events) {
+            const article = document.createElement('article');
+            const title = document.createElement('h2');
+            const summary = document.createElement('p');
+            const metadata = document.createElement('p');
+            title.textContent = event.title;
+            summary.textContent = event.summary;
+            metadata.className = 'meta';
+            metadata.textContent = `${event.category} · ${event.location} · ${event.timestamp}`;
+            article.append(title, summary, metadata);
+            container.append(article);
+          }
+        })
+        .catch(() => {
+          status.textContent = 'Sample records could not be loaded.';
+        });
+    </script>
+  </body>
+</html>
